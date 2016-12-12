@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myFriends">
 <head>
   <title>Angular Friends</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body ng-controller="mainCtrl">
 
   <h1>The <strong>facebook</strong> Friend Machine</h1>
 
@@ -20,6 +20,7 @@
         <input class="form-control" placeholder="Search Name">
         <input class="form-control" placeholder="Search Location">
           -->
+
 
         <select class="input-medium">
           <option>Name</option>
@@ -38,7 +39,24 @@
     </form>
 
     <ul>
-      <li class='friend'>
+      <li ng-repeat="friend in friends" class='friend'>
+        <img class="profile-pic" ng-src={{friend.pic_square}}>
+
+        <h3>{{friend.name}}</h3>
+
+        <div class="location">
+          Location: {{friend.current_location.city}}, {{friend.current_location.state}}, {{friend.current_location.country}}
+        </div>
+
+        <div class="status">
+          Status: {{friend.status.message}} <span class="hashtag">#ihateprovo</span>
+        </div>
+
+        <div class="num-friends">
+          Friends: {{friend.friend_count}}
+        </div>
+      </li>
+      <!-- <li class='friend'>
         <img class="profile-pic" src='http://placebear.com/50/50.jpg'>
 
         <h3>Cali Fornia</h3>
@@ -54,7 +72,7 @@
         <div class="num-friends">
           Friends: 1,367
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 
