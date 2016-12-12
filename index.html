@@ -21,13 +21,25 @@
         <input class="form-control" placeholder="Search Location" ng-model = "friendFilter.current_location.name">
 
 
+        <!-- <select ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select> -->
+        <!-- $scope.selected = $scope.items[0]; -->
 
-        <select class="input-medium" ng-model =sortProp>
+        <!-- <select class="input-medium" ng-model ="sortProp">
           <option value="name">Name</option>
           <option value="friend_count">#Friends</option>
           <option value="current_location.city">City</option>
           <option value="current_location.state">State</option>
           <option value="current_location.country">Country</option>
+        </select> -->
+
+        <!-- option select with NG repeat
+        <select class="input-medium" ng-model ="sortProp">
+          <option ng-repeat="item in list" value="{{item.val}}">{{item.option}}</option>
+        </select> -->
+
+        <!-- option select for dynamic sorting with data from a server -->
+        <select class="input-medium" ng-model="sortProp" ng-options="item.option for item in list">
+
         </select>
 
         <select class="input-medium" ng-model ="cending">
@@ -39,7 +51,7 @@
     </form>
 
     <ul>
-      <li ng-repeat="friend in friends | filter: friendFilter | orderBy: cending+sortProp " class='friend'>
+      <li ng-repeat="friend in friends | filter: friendFilter | orderBy: cending+sortProp.val " class='friend'>
         <img class="profile-pic" ng-src={{friend.pic_square}}>
 
         <h3>{{friend.name}}</h3>

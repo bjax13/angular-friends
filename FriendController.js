@@ -1,6 +1,9 @@
 angular.module('myFriends')
 .controller('mainCtrl',function ($scope) {
 
+  $scope.selected = $scope.friends;
+  $scope.list = [{option:"Name", val: "name"}, {option: "#friends", val:"friend_count"},{option:"City", val: "current_location.city"},{option:"State", val: "current_location.state"},{option:"Country", val: "current_location.country"}]
+
   $scope.friends = [
     {
       "name": "Preston McNeil",
